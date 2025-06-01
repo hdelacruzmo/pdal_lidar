@@ -1,0 +1,40 @@
+{
+  "pipeline": [
+    {
+      "type": "readers.e57",
+      "filename": "OSU_Ojubo_Osogbo_Cyclone.e57"
+    },
+    {
+      "type": "filters.stats",
+      "dimensions": "X,Y,Z"
+    },
+    {
+      "type": "filters.outlier",
+      "method": "statistical",
+      "mean_k": 8,
+      "multiplier": 2.0
+    },
+    {
+      "type": "filters.range",
+      "limits": "Classification![7:7]"
+    },
+    {
+      "type": "filters.smrf",
+      "window": 18,
+      "slope": 0.15,
+      "threshold": 0.5,
+      "cell": 1.0
+    },
+    {
+      "type": "filters.hag_nn"
+    },
+    {
+      "type": "writers.las",
+      "filename": "output_processed.las",
+      "compression": "laszip",
+      "minor_version": 2,
+      "dataformat_id": 1,
+      "extra_dims": "all"
+    }
+  ]
+} 

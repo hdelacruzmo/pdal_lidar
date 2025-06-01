@@ -1,0 +1,18 @@
+{
+  "pipeline": [
+    {
+      "type": "readers.e57",
+      "filename": "OSU_Ojubo_Osogbo_Cyclone.e57"
+    },
+    {
+      "type": "filters.stats"
+    },
+    {
+      "type": "writers.las",
+      "filename": "output.las",
+      "compression": "laszip",
+      "minor_version": 2,
+      "dataformat_id": 1
+    }
+  ]
+} 
